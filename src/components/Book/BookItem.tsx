@@ -1,15 +1,15 @@
 import './BookItem.css';
-import Card from '../UI/Card.js';
+import Card from '../UI/Card';
 
-function BookItem(props) {
+const BookItem = (props: any) => {
   return (
     <Card className="wrap">
       <div className="left-section">
-        <p>img section</p>
+        <img src={props.data.imgUrl} alt={props.data.title}></img>
       </div>
       <div className="right-section">
         <div className="book-quote">
-          <h3>{props.data.quote}</h3>
+          <h4>{props.data.quote}</h4>
         </div>
         <div className="book-title">
           <p>{props.data.title}</p>
@@ -20,6 +20,6 @@ function BookItem(props) {
       </div>
     </Card>
   );
-}
+};
 
 export default BookItem;
