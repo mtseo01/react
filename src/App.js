@@ -35,10 +35,11 @@ function App() {
   return (
     <div className="App">
       <h1>Here With Contents!</h1>
-      <BookItem data={books[0]}></BookItem>
-      <BookItem data={books[1]}></BookItem>
-      <BookItem data={books[2]}></BookItem>
-      <BookItem data={books[3]}></BookItem>
+      <div>
+        {books.map((book) => (
+          <BookItem key={book.id} data={book} />
+        ))}
+      </div>
     </div>
   );
 }
