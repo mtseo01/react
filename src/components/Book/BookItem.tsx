@@ -1,11 +1,19 @@
 import './BookItem.css';
 import Card from '../UI/Card';
-
+import { useState } from 'react';
 const BookItem = (props: any) => {
+  const [likes, setLikes] = useState<number>(props.data.likes);
+
+  const clickLikeBtn = (event: any): void => {
+    event.preventDefault();
+    setLikes(likes + 1);
+  };
+
   const clickImg = (event: any): void => {
     event.preventDefault();
     props.alertTitle(props.data.title);
   };
+
   return (
     <Card className="wrap">
       <div className="left-section" onClick={clickImg}>
@@ -22,9 +30,11 @@ const BookItem = (props: any) => {
           <p>{props.data.author}</p>
         </div>
         <div>
-          <p>Likes: {props.data.likes}</p>
+          <p>Likes: {likes}</p>
         </div>
-        <div>{/* <button onClick={}>like</button> */}</div>
+        <div>
+          <button onClick={clickLikeBtn}>Like</button>
+        </div>
       </div>
     </Card>
   );

@@ -21,3 +21,10 @@ img {
   width: 70%;
   margin-left: 4px;
 }
+
+button {
+  cursor: pointer;
+  margin: 6px;
+  width: 50px;
+  height: 25px;
+}
