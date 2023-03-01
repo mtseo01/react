@@ -1,15 +1,13 @@
-import './App.css';
-import BookItem from './components/Book/BookItem';
-import books from './assets/data';
+import BookItem from '../../components/books/BookItem';
+import books from '../../assets/data';
 
-const App = () => {
+const ListPage = () => {
   const alertTitle = (title: string): void => {
     alert(title);
   };
-
   return (
-    <div className="App">
-      <h1>Here With Contents!</h1>
+    <div>
+      <h1>list page</h1>
       <div>
         {books.map((book) => (
           <BookItem key={book.id} data={book} alertTitle={alertTitle} />
@@ -19,4 +17,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default ListPage;

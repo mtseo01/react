@@ -1,6 +1,7 @@
 import './BookItem.css';
 import Card from '../UI/Card';
 import { useState } from 'react';
+
 const BookItem = (props: any) => {
   const [likes, setLikes] = useState<number>(props.data.likes);
 
@@ -10,7 +11,6 @@ const BookItem = (props: any) => {
   };
 
   const clickImg = (event: any): void => {
-    event.preventDefault();
     props.alertTitle(props.data.title);
   };
 
