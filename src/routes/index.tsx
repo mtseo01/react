@@ -1,21 +1,18 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-} from 'react-router-dom';
-
-import App from '../pages/App';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+import RootLayout from '../pages/books/RootLayout';
 import BookListPage from '../pages/books/BookListPage';
 import BookDetailPage from '../pages/books/BookDetailPage';
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      <Route path="/" element={<App />}></Route>
-      <Route path="/books" element={<BookListPage />}></Route>
-      <Route path="/books/detail/:id" element={<BookDetailPage />}></Route>
-    </>
-  )
-);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      { path: '/', element: <Navigate to="/books" /> },
+      { path: '/books', element: <BookListPage /> },
+      { path: '/books/detail/:id', element: <BookDetailPage /> },
+    ],
+  },
+]);
 
 export default router;

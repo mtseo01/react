@@ -1,9 +1,11 @@
 import './App.css';
-
+// import Navbar from '../components/UI/Navbar';
+import { RouterProvider } from 'react-router-dom';
+import router from '../routes/index';
 const App = () => {
   return (
     <div className="App">
-      <h1>Here With Contents!</h1>
+      <RouterProvider router={router} />
     </div>
   );
 };
