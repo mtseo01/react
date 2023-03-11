@@ -1,0 +1,20 @@
+.form-warp {
+  padding: 12px;
+  width: 600px;
+  margin: 30px auto;
+}
+
+label {
+  display: block;
+  margin: 2px;
+}
+
+input {
+  height: 20px;
+  width: 400px;
+  margin: 6px 0;
+}
+textarea {
+  width: 400px;
+  margin: 8px 0;
+}
