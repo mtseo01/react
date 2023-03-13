@@ -1,8 +1,12 @@
 import './BookItem.css';
-import Card from '../UI/Card';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const BookItem = (props: any) => {
+// component
+import Card from '../UI/Card';
+
+function BookItem(props: any) {
+  const navigate = useNavigate();
   const [likes, setLikes] = useState<number>(props.data.likes);
 
   const clickLikeBtn = (event: any): void => {
@@ -10,13 +14,14 @@ const BookItem = (props: any) => {
     setLikes(likes + 1);
   };
 
-  const clickImg = (event: any): void => {
-    props.alertTitle(props.data.title);
+  // 이미지 클릭 시 디테일 페이지로 이동
+  const clickImgHandler = (): void => {
+    navigate('detail/' + props.data._id);
   };
 
   return (
     <Card className="wrap">
-      <div className="left-section" onClick={clickImg}>
+      <div className="left-section" onClick={clickImgHandler}>
         <img src={props.data.imgUrl} alt={props.data.title}></img>
       </div>
       <div className="right-section">
@@ -38,6 +43,6 @@ const BookItem = (props: any) => {
       </div>
     </Card>
   );
-};
+}
 
 export default BookItem;
