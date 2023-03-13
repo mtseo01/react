@@ -1,15 +1,21 @@
-Vue를 좋아하지만 머리 식힐 때 React + TypeScript 를 공부합니다. 🤣🤣
+React + TypeScript 를 공부합니다. 🤣🤣
 
 ## 목표
 
 ### 프론트엔드
 
 - 페이지
+
   - [책 리스트 페이지](https://github.com/mtseo01/react/blob/main/src/pages/books/BookListPage.tsx)
+    - [책 아이템 컴포넌트](https://github.com/mtseo01/react/blob/main/src/components/books/BookItem.tsx)
+    - [책 추가 버튼 컴포넌트](https://github.com/mtseo01/react/blob/main/src/components/UI/AddButton.tsx)
   - [디테일 페이지](https://github.com/mtseo01/react/blob/main/src/pages/books/BookDetailPage.tsx)
-  - 작성 페이지
+    - [책 디테일 컴포넌트](https://github.com/mtseo01/react/blob/main/src/components/books/Book.tsx)
+  - [작성 페이지](https://github.com/mtseo01/react/blob/main/src/pages/books/BookPostPage.tsx)
+    - [작성 폼 컴포넌트(양방향)](https://github.com/mtseo01/react/blob/main/src/components/books/PostForm.tsx)
   - 수정 페이지
-- API 호출 모듈
+
+- [API 호출 모듈](https://github.com/mtseo01/react/blob/main/src/api/books.tsx)
 - 무한스크롤
 - 라우터 (React-Router-Dom)
   - [라우터](https://github.com/mtseo01/react/blob/main/src/routes/index.tsx)
