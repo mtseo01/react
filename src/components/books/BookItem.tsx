@@ -2,40 +2,44 @@ import './BookItem.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// types
+import { Books } from '../../assets/types';
+
 // component
 import Card from '../UI/Card';
 
-function BookItem(props: any) {
+function BookItem({ data }: { data: Books }) {
+  const { _id, title, author, quote, imgUrl, likes } = data;
   const navigate = useNavigate();
-  const [likes, setLikes] = useState<number>(props.data.likes);
+  const [countLikes, setLikes] = useState<number>(likes);
 
   const clickLikeBtn = (event: any): void => {
     event.preventDefault();
-    setLikes(likes + 1);
+    setLikes(countLikes + 1);
   };
 
   // 이미지 클릭 시 디테일 페이지로 이동
   const clickImgHandler = (): void => {
-    navigate('detail/' + props.data._id);
+    navigate('detail/' + _id);
   };
 
   return (
     <Card className="wrap">
       <div className="left-section" onClick={clickImgHandler}>
-        <img src={props.data.imgUrl} alt={props.data.title}></img>
+        <img src={imgUrl} alt={title}></img>
       </div>
       <div className="right-section">
         <div className="book-quote">
-          <h4>{props.data.quote}</h4>
+          <h4>{quote}</h4>
         </div>
         <div className="book-title">
-          <p>{props.data.title}</p>
+          <p>{title}</p>
         </div>
         <div className="book-author">
-          <p>{props.data.author}</p>
+          <p>{author}</p>
         </div>
         <div>
-          <p>Likes: {likes}</p>
+          <p>Likes: {countLikes}</p>
         </div>
         <div>
           <button onClick={clickLikeBtn}>Like</button>
