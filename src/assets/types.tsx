@@ -6,3 +6,10 @@ export interface Books {
   imgUrl: string;
   likes: number;
 }
+
+export interface BookObj {
+  title: string;
+  author: string;
+  imgUrl: string;
+  quote: string;
+}
