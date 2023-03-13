@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import bookData, { Books } from '../../assets/data';
 import Book from '../../components/books/Book';
-const BookDetailPage = () => {
-  const [books] = useState<Books[]>(bookData);
+
+import { getBook } from '../../api/books';
+
+function BookDetailPage() {
+  const [book, setBook] = useState();
   let { id } = useParams();
-  console.log(id);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await getBook(id);
+        setBook(res.data.doc);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [id]);
   return (
     <div>
       <h1>detail</h1>
-      <Book data={books} id={id} />
+      {book && <Book data={book} />}
     </div>
   );
-};
+}
 
 export default BookDetailPage;
