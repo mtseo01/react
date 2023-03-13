@@ -1,6 +1,15 @@
 import './PostForm.css';
+
+// types
+import { BookObj } from '../../assets/types';
+
+// component
 import Card from '../UI/Card';
-export default function PostForm(props: any) {
+
+export default function PostForm(
+  props: any,
+  { title, author, imgUrl, quote }: BookObj
+) {
   const submitFormHandler = (event: any) => {
     event.preventDefault();
     props.clickPostBtnHandler();
@@ -13,7 +22,7 @@ export default function PostForm(props: any) {
             <input
               type="text"
               placeholder="책 제목"
-              value={props.title}
+              value={title}
               onChange={props.titleChangeHandler}
             />
           </div>
@@ -21,7 +30,7 @@ export default function PostForm(props: any) {
             <input
               type="text"
               placeholder="작가 이름"
-              value={props.author}
+              value={author}
               onChange={props.authorChangeHandler}
             />
           </div>
@@ -29,7 +38,7 @@ export default function PostForm(props: any) {
             <input
               type="text"
               placeholder="책 이미지 URL"
-              value={props.imgUrl}
+              value={imgUrl}
               onChange={props.imgUrlChangeHandler}
             />
           </div>
@@ -38,7 +47,7 @@ export default function PostForm(props: any) {
               cols={50}
               rows={3}
               placeholder="책 내용 중 마음에 들었던 문구를 입력해 주세요."
-              value={props.quote}
+              value={quote}
               onChange={props.quoteChangeHandler}></textarea>
           </div>
           <button type="submit">생성</button>

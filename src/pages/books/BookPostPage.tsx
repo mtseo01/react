@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// types
+import { BookObj } from '../../assets/types';
+
 // component
 import PostForm from '../../components/books/PostForm';
 
@@ -9,50 +12,51 @@ import { createBook } from '../../api/books';
 
 function BookPostPage() {
   const navigate = useNavigate();
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [imgUrl, setImgUrl] = useState('');
-  const [quote, setQuote] = useState('');
+  const [bookObj, setBookObj] = useState<BookObj>({
+    title: '',
+    author: '',
+    imgUrl: '',
+    quote: '',
+  });
 
   const titleChangeHandler = (event: any) => {
-    setTitle(event.target.value);
+    setBookObj({ ...bookObj, title: event.target.value });
   };
   const authorChangeHandler = (event: any) => {
-    setAuthor(event.target.value);
+    setBookObj({ ...bookObj, author: event.target.value });
   };
   const imgUrlChangeHandler = (event: any) => {
-    setImgUrl(event.target.value);
+    setBookObj({ ...bookObj, imgUrl: event.target.value });
   };
   const quoteChangeHandler = (event: any) => {
-    setQuote(event.target.value);
+    setBookObj({ ...bookObj, quote: event.target.value });
   };
 
   // 제출
   const clickPostBtnHandler = async () => {
     if (
-      title.trim() === '' ||
-      author.trim() === '' ||
-      imgUrl.trim() === '' ||
-      quote.trim() === ''
+      bookObj.title.trim() === '' ||
+      bookObj.author.trim() === '' ||
+      bookObj.imgUrl.trim() === '' ||
+      bookObj.quote.trim() === ''
     ) {
       alert('모두 입력해 주세요.');
       return;
     } else {
       const data = {
-        title,
-        author,
-        imgUrl,
-        quote,
+        ...bookObj,
       };
       try {
         // Book 생성하기
         const res = await createBook(data);
         console.log(res);
 
-        setTitle('');
-        setAuthor('');
-        setImgUrl('');
-        setQuote('');
+        setBookObj({
+          title: '',
+          author: '',
+          imgUrl: '',
+          quote: '',
+        });
 
         // 리스트 페이지로 이동
         navigate('/books');
@@ -67,10 +71,10 @@ function BookPostPage() {
     <div>
       <h2>작성 페이지</h2>
       <PostForm
-        title={title}
-        author={author}
-        imgUrl={imgUrl}
-        quote={quote}
+        title={bookObj.title}
+        author={bookObj.author}
+        imgUrl={bookObj.imgUrl}
+        quote={bookObj.quote}
         titleChangeHandler={titleChangeHandler}
         authorChangeHandler={authorChangeHandler}
         imgUrlChangeHandler={imgUrlChangeHandler}
