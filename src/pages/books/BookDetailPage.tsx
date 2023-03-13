@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Book from '../../components/books/Book';
 
+// types
+import { Books } from '../../assets/types';
+
+// API
 import { getBook } from '../../api/books';
 
 function BookDetailPage() {
-  const [book, setBook] = useState();
+  const [book, setBook] = useState<Books>();
   let { id } = useParams();
 
   useEffect(() => {
