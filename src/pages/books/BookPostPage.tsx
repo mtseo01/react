@@ -75,6 +75,7 @@ function BookPostPage() {
         author={bookObj.author}
         imgUrl={bookObj.imgUrl}
         quote={bookObj.quote}
+        buttonName="생성"
         titleChangeHandler={titleChangeHandler}
         authorChangeHandler={authorChangeHandler}
         imgUrlChangeHandler={imgUrlChangeHandler}
