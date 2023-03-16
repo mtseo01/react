@@ -1,13 +1,9 @@
 import { instance } from './index';
 
-type Data = {
-  title: string;
-  author: string;
-  quote: string;
-  imgUrl: string;
-};
+// types
+import { BookObj } from '../assets/types';
 
-function createBook(data: Data) {
+function createBook(data: BookObj) {
   return instance.post('books', data);
 }
 
@@ -15,15 +11,15 @@ function getBooksAll() {
   return instance.get('books');
 }
 
-function getBook(id: string) {
+function getBook(id: string | undefined) {
   return instance.get('books/' + id);
 }
 
-function updateBook(id: string, data: Data) {
+function updateBook(id: string | undefined, data: BookObj) {
   return instance.put('books/' + id, data);
 }
 
-function deleteBook(id: string) {
+function deleteBook(id: string | undefined) {
   return instance.delete('books/' + id);
 }
 
