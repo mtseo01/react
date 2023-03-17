@@ -11,9 +11,10 @@ React + TypeScript 를 공부합니다. 🤣🤣
     - [책 추가 버튼 컴포넌트](https://github.com/mtseo01/react/blob/main/src/components/UI/AddButton.tsx)
   - [디테일 페이지](https://github.com/mtseo01/react/blob/main/src/pages/books/BookDetailPage.tsx)
     - [책 디테일 컴포넌트](https://github.com/mtseo01/react/blob/main/src/components/books/Book.tsx)
-  - [작성 페이지](https://github.com/mtseo01/react/blob/main/src/pages/books/BookPostPage.tsx)
-    - [작성 폼 컴포넌트(양방향)](https://github.com/mtseo01/react/blob/main/src/components/books/PostForm.tsx)
-  - 수정 페이지
+  - [작성 페이지(양방향)](https://github.com/mtseo01/react/blob/main/src/pages/books/BookPostPage.tsx)
+    - [작성 폼 컴포넌트](https://github.com/mtseo01/react/blob/main/src/components/books/PostForm.tsx)
+  - [수정 페이지](https://github.com/mtseo01/react/blob/main/src/pages/books/BookUpdatePage.tsx)
+    - [작성 폼 컴포넌트(재사용)](https://github.com/mtseo01/react/blob/main/src/components/books/PostForm.tsx)
 
 - [API 호출 모듈](https://github.com/mtseo01/react/blob/main/src/api/books.tsx)
 - 무한스크롤
@@ -21,7 +22,7 @@ React + TypeScript 를 공부합니다. 🤣🤣
   - [라우터](https://github.com/mtseo01/react/blob/main/src/routes/index.tsx)
 - 타입스크립트 적용
 
-### 백엔드엔드
+### 백엔드
 
 - WAS (express)
 - DB (mongoDB - mongoose)
