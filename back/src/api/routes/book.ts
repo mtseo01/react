@@ -1,19 +1,34 @@
-import express from 'express';
+import express, { Request } from 'express';
 import * as bookController from '../controllers/book';
-import multer from 'multer';
+import multer, { FileFilterCallback } from 'multer';
+
+type DestinationCallback = (error: Error | null, destination: string) => void;
+type FileNameCallback = (error: Error | null, filename: string) => void;
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: function (
+    req: Request,
+    file: Express.Multer.File,
+    cb: DestinationCallback
+  ): void {
     cb(null, './uploads/');
   },
-  filename: function (req, file, cb) {
+  filename: function (
+    req: Request,
+    file: Express.Multer.File,
+    cb: FileNameCallback
+  ): void {
     cb(null, new Date().toISOString() + file.originalname);
   },
 });
 
-const fileFilter = (req: any, file: any, cb: any) => {
+const fileFilter = (
+  req: Request,
+  file: Express.Multer.File,
+  cb: FileFilterCallback
+) => {
   // reject a file
-  if (file.mimetye === 'image/jpeg' || file.mimetype === 'image/png') {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true);
   } else {
     cb(null, false);
@@ -21,7 +36,7 @@ const fileFilter = (req: any, file: any, cb: any) => {
 };
 
 const upload = multer({
-  storage: storage,
+  storage,
   limits: { fileSize: 20000 },
   fileFilter,
 });
