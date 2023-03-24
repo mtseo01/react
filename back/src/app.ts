@@ -22,6 +22,7 @@ app.use(morgan('dev'));
 app.use(cors({ origin: true, credentials: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use('/uploads', express.static('uploads'));
 
 // 라우팅
 app.use('/books', bookRouter);

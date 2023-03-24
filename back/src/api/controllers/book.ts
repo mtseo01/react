@@ -3,12 +3,16 @@ import mongoose, { Document } from 'mongoose';
 import Book from '../models/book';
 
 const createBook = (req: Request, res: Response) => {
+  console.log(req.file);
   const book = new Book({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
     author: req.body.author,
     quote: req.body.quote,
     imgUrl: req.body.imgUrl,
+
+    // image file
+    bookImage: req.file?.path,
   });
   book
     .save()

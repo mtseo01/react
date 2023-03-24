@@ -7,6 +7,7 @@ export interface IBook {
   quote: string;
   imgUrl: string;
   likes: number;
+  bookImage: string;
 }
 
 export interface IBookModel extends IBook {}
@@ -18,6 +19,9 @@ const bookSchema = new mongoose.Schema<IBook, IBookModel>({
   quote: { type: String, required: true },
   imgUrl: { type: String, required: true },
   likes: { type: Number, default: 0 },
+
+  // image file
+  bookImage: { type: String },
 });
 
 export default mongoose.model<IBookModel>('Book', bookSchema);
