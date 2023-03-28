@@ -18,6 +18,8 @@ function BookPostPage() {
     imgUrl: '',
     quote: '',
   });
+  const [imageSrc, setImageSrc] = useState('');
+  // const [imgFile, setImgFile] = useState('');
 
   const titleChangeHandler = (event: any) => {
     setBookObj({ ...bookObj, title: event.target.value });
@@ -30,6 +32,16 @@ function BookPostPage() {
   };
   const quoteChangeHandler = (event: any) => {
     setBookObj({ ...bookObj, quote: event.target.value });
+  };
+
+  // 업로드 이미지 미리보기
+  const imgFileChangeHandler = (event: any) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImageSrc(reader.result as string);
+    };
   };
 
   // 제출
@@ -75,12 +87,14 @@ function BookPostPage() {
         author={bookObj.author}
         imgUrl={bookObj.imgUrl}
         quote={bookObj.quote}
+        imageSrc={imageSrc}
         buttonName="생성"
         titleChangeHandler={titleChangeHandler}
         authorChangeHandler={authorChangeHandler}
         imgUrlChangeHandler={imgUrlChangeHandler}
         quoteChangeHandler={quoteChangeHandler}
         clickPostBtnHandler={clickPostBtnHandler}
+        imgFileChangeHandler={imgFileChangeHandler}
       />
     </div>
   );

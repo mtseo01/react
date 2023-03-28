@@ -18,3 +18,10 @@ textarea {
   width: 400px;
   margin: 8px 0;
 }
+
+.thumbnail {
+  text-align: center;
+  border: 0.3px solid black;
+  width: 100px;
+  height: 100px;
+}

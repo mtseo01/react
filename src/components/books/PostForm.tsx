@@ -40,6 +40,7 @@ export default function PostForm(props: any) {
               onChange={props.imgUrlChangeHandler}
             />
           </div>
+
           <div>
             <textarea
               cols={50}
@@ -47,6 +48,24 @@ export default function PostForm(props: any) {
               placeholder="책 내용 중 마음에 들었던 문구를 입력해 주세요."
               value={props.quote}
               onChange={props.quoteChangeHandler}></textarea>
+          </div>
+          <div>
+            <input
+              type="file"
+              name=""
+              id=""
+              accept="image/*"
+              onChange={props.imgFileChangeHandler}
+            />
+          </div>
+          <div className="thumbnail-area">
+            {props.imageSrc && (
+              <img
+                className="thumbnail"
+                src={props.imageSrc}
+                alt="preview-img"
+              />
+            )}
           </div>
           <button type="submit">{props.buttonName}</button>
         </form>
