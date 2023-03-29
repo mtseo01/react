@@ -5,6 +5,7 @@ export interface Books {
   quote: string;
   imgUrl: string;
   likes: number;
+  bookImage: string;
 }
 
 export interface BookObj {
