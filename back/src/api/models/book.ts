@@ -17,7 +17,7 @@ const bookSchema = new mongoose.Schema<IBook, IBookModel>({
   title: { type: String, required: true },
   author: { type: String, required: true },
   quote: { type: String, required: true },
-  imgUrl: { type: String, required: true },
+  imgUrl: { type: String },
   likes: { type: Number, default: 0 },
 
   // image file
