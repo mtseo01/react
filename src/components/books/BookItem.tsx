@@ -9,7 +9,7 @@ import { Books } from '../../assets/types';
 import Card from '../UI/Card';
 
 function BookItem({ data }: { data: Books }) {
-  const { _id, title, author, quote, imgUrl, likes } = data;
+  const { _id, title, author, quote, imgUrl, bookImage, likes } = data;
   const navigate = useNavigate();
   const [countLikes, setLikes] = useState<number>(likes);
 
@@ -26,7 +26,11 @@ function BookItem({ data }: { data: Books }) {
   return (
     <Card className="wrap">
       <div className="left-section" onClick={clickImgHandler}>
-        <img src={imgUrl} alt={title}></img>
+        {imgUrl ? (
+          <img src={imgUrl} alt={title}></img>
+        ) : (
+          <img src={`http://localhost:3001/` + bookImage} alt={title}></img>
+        )}
       </div>
       <div className="right-section">
         <div className="book-quote">

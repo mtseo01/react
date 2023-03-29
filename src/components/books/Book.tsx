@@ -1,5 +1,4 @@
 import './BookItem.css';
-import { Link } from 'react-router-dom';
 
 // types
 import { Books } from '../../assets/types';
@@ -7,11 +6,15 @@ import { Books } from '../../assets/types';
 // component
 import Card from '../UI/Card';
 function Book({ data }: { data: Books }) {
-  const { title, author, quote, imgUrl, likes } = data;
+  const { title, author, quote, imgUrl, bookImage, likes } = data;
   return (
     <Card className="wrap">
       <div className="left-section">
-        <img src={imgUrl} alt={title}></img>
+        {imgUrl ? (
+          <img src={imgUrl} alt={title}></img>
+        ) : (
+          <img src={`http://localhost:3001/` + bookImage} alt={title}></img>
+        )}
       </div>
       <div className="right-section">
         <div className="book-quote">
@@ -26,7 +29,6 @@ function Book({ data }: { data: Books }) {
         <div>
           <p>likes : {likes}</p>
         </div>
-        <Link to="/">home</Link>
       </div>
     </Card>
   );
