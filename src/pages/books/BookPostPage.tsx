@@ -19,7 +19,7 @@ function BookPostPage() {
     quote: '',
   });
   const [imageSrc, setImageSrc] = useState('');
-  // const [imgFile, setImgFile] = useState('');
+  const [imgFile, setImgFile] = useState('');
 
   const titleChangeHandler = (event: any) => {
     setBookObj({ ...bookObj, title: event.target.value });
@@ -37,6 +37,7 @@ function BookPostPage() {
   // 업로드 이미지 미리보기
   const imgFileChangeHandler = (event: any) => {
     const file = event.target.files[0];
+    setImgFile(file);
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
@@ -49,26 +50,26 @@ function BookPostPage() {
     if (
       bookObj.title.trim() === '' ||
       bookObj.author.trim() === '' ||
-      bookObj.imgUrl.trim() === '' ||
       bookObj.quote.trim() === ''
     ) {
       alert('모두 입력해 주세요.');
       return;
     } else {
-      const data = {
+      const data: any = {
         ...bookObj,
       };
       try {
-        // Book 생성하기
-        const res = await createBook(data);
-        console.log(res);
+        // 데이터 추가
+        const formData = new FormData();
+        formData.append('title', data.title);
+        formData.append('author', data.author);
+        formData.append('quote', data.quote);
+        formData.append('imgUrl', data.imgUrl);
+        formData.append('bookImage', imgFile);
 
-        setBookObj({
-          title: '',
-          author: '',
-          imgUrl: '',
-          quote: '',
-        });
+        // Book 생성하기
+        const res = await createBook(formData as any);
+        console.log(res);
 
         // 리스트 페이지로 이동
         navigate('/books');
