@@ -13,4 +13,5 @@ export interface BookObj {
   author: string;
   imgUrl: string;
   quote: string;
+  bookImage: string;
 }
